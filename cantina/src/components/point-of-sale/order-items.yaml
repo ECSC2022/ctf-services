@@ -1,0 +1,14 @@
+categories:
+  - name: "Pasta"
+    items:
+      - id: 0
+        name: "Carbonara"
+        price: 10
+        image_url: "carbonara.jpg"
+  - name: "Pizza"
+    items:
+      - id: 0
+        name: "Pizza Hawaii"
+        price: 15
+        image_url: "cancer.jpg"
+

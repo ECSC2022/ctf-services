@@ -1,0 +1,12 @@
+version: '3'
+
+volumes:
+  checkerstate:
+
+services:
+  checker:
+    build: .
+    command: localhost 1 ${TICK} # ip, team, tick
+    network_mode: host
+    volumes:
+      - checkerstate:/tmp

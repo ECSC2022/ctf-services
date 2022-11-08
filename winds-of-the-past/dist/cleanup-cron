@@ -1,0 +1,2 @@
+# Delete files not accessed for >30 minutes
+*/5 * * * * /usr/bin/find /data -amin +30 -delete

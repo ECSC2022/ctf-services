@@ -1,0 +1,36 @@
+[package]
+version = "0.3.0"
+name = "backend-rust"
+repository = "https://github.com/lehrbaumm/bin_quickstart"
+authors = ["Maximilian Lehrbaum <maximilian@lehrbaum.dev>"]
+description = ""
+categories = ["binary", "cli"]
+license = "GPL-3.0"
+readme = "./README.md"
+edition = "2021"
+build = false
+publish = false
+
+[dependencies]
+base64 = "0.13"
+chrono = "0.4"
+color-eyre = "0.6"
+diesel = { version = "1.4", features = ["sqlite", "postgres", "r2d2"] }
+dotenv = "0.15"
+jsonwebtoken = "8.1"
+lazy_static = "1.4.0"
+libsqlite3-sys = { version = "^0", features = ["bundled"] }
+rand = "0.8.5"
+regex = "1.6"
+resvg = "0.23.0"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+sha256 = "1.0.3"
+tiny-skia = "0.6.5"
+tokio = { version = "1.20", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+tree_magic = "0.2"
+usvg = "0.23.0"
+warp = "0.3"

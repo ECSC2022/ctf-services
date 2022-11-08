@@ -1,0 +1,19 @@
+.top-nav {
+    padding: var(--spacing);
+    border-bottom: 1px solid #343434;
+    background-color: #11191f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.menu-item-image {
+    text-align: center;
+}
+
+#app {
+    margin-top: 5rem;
+}

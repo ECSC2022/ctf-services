@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  checkerstate:
+
+networks:
+  gamenet:
+    external:
+      name: gamenet
+
+services:
+  checker:
+    build: .
+    command: localhost 1 ${TICK} # ip, team, tick
+    network_mode: host
+    volumes:
+      - checkerstate:/tmp

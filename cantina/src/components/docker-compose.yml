@@ -1,0 +1,126 @@
+version: '3.8'
+
+services:
+  cantina-gateway:
+    network_mode: "host" # Needs a SocketCAN interface on host
+    image: localhost:30005/cantina-gateway:latest
+    build:
+      dockerfile: ./gateway/Dockerfile
+      context: .
+    environment:
+      CAN_IF: "vcan0"
+      GAMEBOT_PUBKEY: "bYOdLw9rv5VsNjVp/WulrJflV2H4r8/IttasxX5EYFQ="
+    ports:
+      - "9999:10020"
+    volumes:
+      - '../conf:/conf:ro'
+      - '../../checkers/shared:/shared:ro'
+    read_only: true
+
+  cantina-keyserver:
+    network_mode: "host" # Needs a SocketCAN interface on host
+    image: localhost:30005/cantina-keyserver:latest
+    build:
+      dockerfile: ./keyserver/Dockerfile
+      context: .
+    environment:
+      CAN_IF: "vcan0"
+      DATA_DIR: "/data"
+    volumes:
+      - ks-data:/data
+    read_only: true
+
+  cantina-point-of-sale:
+    network_mode: "host" # Needs a SocketCAN interface on host
+    image: localhost:30005/cantina-point-of-sale:latest
+    build:
+      dockerfile: ./point-of-sale/Dockerfile
+      context: .
+    environment:
+      GAMEBOT_PUBKEY: "bYOdLw9rv5VsNjVp/WulrJflV2H4r8/IttasxX5EYFQ="
+      ITEM_CONFIG: /app/order-items.yaml
+      CAN_IF: "vcan0"
+      DATA_DIR: "/data"
+      GIN_MODE: "release"
+      PORT: "10021"
+    ports:
+      - "10021:10021"
+    volumes:
+      - pos-data:/data
+    read_only: true
+
+  cantina-order-db:
+    network_mode: "host" # Needs a SocketCAN interface on host
+    image: localhost:30005/cantina-order-db:latest
+    build:
+      dockerfile: ./order-db/Dockerfile
+      context: .
+    environment:
+      CAN_IF: "vcan0"
+      DATA_DIR: "/data"
+    volumes:
+      - orderdb-data:/data
+    read_only: true
+
+  cantina-userdb-back:
+     network_mode: "host" # Needs a SocketCAN interface on host
+     build: userdb-back
+     environment:
+       CAN_IF: "vcan0"
+       DATA_DIR: "/data"
+     ports:
+       - ":10026"
+     volumes:
+       - userdb-data:/data
+       - ./userdb-back:/app:ro
+     read_only: true
+
+  cantina-userdb-proxy:
+    network_mode: "host" # Needs a SocketCAN interface on host
+    build:
+      dockerfile: ./userdb-proxy/Dockerfile
+      context: .
+    environment:
+      CAN_IF: "vcan0"
+      DATA_DIR: "/data"
+      # volumes:
+      #- userdb-data:/data
+    read_only: true
+
+  cantina-jukebox-front:
+    network_mode: "host" # Needs a SocketCAN interface on host
+    build:
+      dockerfile: ./jukebox-front/Dockerfile
+      context: .
+    environment:
+      CAN_IF: "vcan0"
+      DATA_DIR: "/data"
+      PORT: "10024"
+    ports:
+      - "10024:10024"
+    volumes:
+      - jukebox-data:/data
+      - ./jukebox-front:/app:ro
+    read_only: true
+
+  cantina-jukebox-proxy:
+      network_mode: "host" # Needs a SocketCAN interface on host
+      build:
+        dockerfile: ./jukebox-proxy/Dockerfile
+        context: .
+      environment:
+        CAN_IF: "vcan0"
+        DATA_DIR: "/data"
+      volumes:
+        - jukebox-data:/data
+      read_only: true
+
+
+volumes:
+  ks-data:
+  pos-data:
+  orderdb-data:
+  media-data:
+  userdb-data:
+  jukebox-data:
+

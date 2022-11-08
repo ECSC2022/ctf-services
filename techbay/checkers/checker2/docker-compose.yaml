@@ -1,0 +1,8 @@
+version: '3'
+
+
+services:
+  checker:
+    build: .
+    command: localhost 1 ${TICK}
+    network_mode: host

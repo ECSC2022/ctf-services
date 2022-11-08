@@ -1,0 +1,64 @@
+{% extends "_base.html" %}
+{% block title %}WFC - Index{% endblock %}
+{% block content %}
+    <table cellspacing="0" style="width: 100%; border: solid black 2px; border-spacing: 0px;">
+            <tr>
+                <td style="border: solid black 2px;">
+                    <table style="width: 100%; border-spacing: 0px;">
+                        <tr >
+                            <td  colspan="2" style="background-color: black; color:white; text-align: center">Sensors</td>
+                        </tr>
+                        <tr>
+                            <td>Valve Target Position:</td>
+                            <td>{{ s.position }}%</td>
+                        </tr>
+                        <tr>
+                            <td>Valve Current Position:</td>
+                            <td>{{ s.position }}%</td>
+                        </tr>
+                        <tr>
+                            <td>Water-Temperature:</td>
+                            <td>{{ s.water_temperature }} °C</td>
+                        </tr>
+                        <tr>
+                            <td>Operating Mode:</td>
+                            <td>{{ s.mode }}</td>
+                        </tr>
+                        <tr>
+                            <td>Command Source:</td>
+                            <td>{{ s.command_source }}</td>
+                        </tr>
+                        <tr>
+                            <td>Control Voltage:</td>
+                            <td>{{ s.voltage }} V</td>
+                        </tr>
+                        <tr>
+                            <td>Defrosting required:</td>
+                            <td>{{ s.defrosting }}</td>
+                        </tr>
+                        <tr>
+                            <td>Defrosting status:</td>
+                            <td>{{ s.defrosting_status }}</td>
+                        </tr>
+                        <tr>
+                            <td>Firmware Version:</td>
+                            <td>{{ version }}</td>
+                        </tr>
+                        <tr>
+                            <td>Firmware Hash:</td>
+                            <td>{{ fhash }}</td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td style="height: 100%; border: solid black 2px; width: 50px">
+                    <div class="loadbar" style="width: 100%">
+                        <strong class="bar" style='height: {{ s.position }}%; width: 100%; text-align: center'>{{ s.position }}%</strong>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: green; border: black; color: white; text-align: center">No Alarm!</td>
+            </tr>
+        </table>
+{% endblock %}

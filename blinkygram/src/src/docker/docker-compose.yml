@@ -1,0 +1,44 @@
+version: '3'
+
+volumes:
+  bot-storage:
+  server-storage:
+
+networks:
+  external:
+    name: gamenet
+
+services:
+  blinkygram-bot:
+    read_only: true
+    build: ./bot
+    restart: unless-stopped
+    volumes:
+      - bot-storage:/app/storage
+    environment:
+      - BOT_SERVER_HOST=blinkygram-server
+      - BOT_SERVER_PORT=10050
+      - BOT_WORKERS=32
+    depends_on:
+      - blinkygram-server
+    links:
+      - blinkygram-server
+    networks:
+      - external
+  blinkygram-server:
+    read_only: true
+    tmpfs:
+      - /tmp
+    build: ./server
+    restart: unless-stopped
+    volumes:
+      - server-storage:/app/storage
+    environment:
+      - SERVER_BIND_HOST=0.0.0.0
+      - SERVER_BIND_PORT=10050
+      - SERVER_WORKERS=1
+      - SERVER_THROTTLE_RPS=10
+    ports:
+      - '0.0.0.0:10050:10050'
+    networks:
+      - external

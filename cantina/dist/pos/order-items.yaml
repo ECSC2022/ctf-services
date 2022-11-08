@@ -1,0 +1,60 @@
+categories:
+  - name: "Pizza"
+    items:
+      - item_id: 0
+        name: "Pizza Hawaii"
+        price: 10
+        image_url: "hawaii.jpg"
+      - item_id: 1
+        name: "Pizza Hawaii (Lavish speciale)"
+        price: 15
+        image_url: "hawaii_lavish.jpg"
+      - item_id: 2
+        name: "Pizza Funghi"
+        price: 10
+        image_url: "funghi.jpg"
+      - item_id: 3
+        name: "Pizza Tonno"
+        price: 11
+        image_url: "tonno.jpg"
+  - name: "Pasta"
+    items:
+      - item_id: 4
+        name: "Rigatoni al Forno"
+        price: 9
+        image_url: "rigatoni.jpg"
+      - item_id: 5
+        name: "Tortelloni Prosciutto"
+        price: 7
+        image_url: "tortelloni.jpg"
+      - item_id: 6
+        name: "Spaghetti Carbonara"
+        price: 6
+        image_url: "carbonara.jpg"
+      - item_id: 7
+        name: "Spaghetti Pomodoro"
+        price: 4
+        image_url: "pomodoro.jpg"
+  - name: "Burgers"
+    items:
+      - item_id: 8
+        name: "Cheese Burger"
+        price: 3
+        image_url: "cheese.jpg"
+      - item_id: 9
+        name: "Bacon Burger"
+        price: 12
+        image_url: "bacon.jpg"
+      - item_id: 10
+        name: "Special CANtina Burger"
+        price: 13
+        image_url: "special.jpg"
+      - item_id: 11
+        name: "Double Cheese Burger"
+        price: 12
+        image_url: "double.jpg"
+      - item_id: 12
+        name: "The Grim Reaper"
+        price: 6
+        image_url: "reaper.jpg"
+

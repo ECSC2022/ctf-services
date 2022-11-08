@@ -1,0 +1,18 @@
+:8080
+log
+
+reverse_proxy techbay-frontend:8080
+
+reverse_proxy /offer techbay-backend-node:8080
+reverse_proxy /offer/* techbay-backend-node:8080
+
+reverse_proxy /profile techbay-backend-node:8080
+reverse_proxy /profile/* techbay-backend-node:8080
+
+reverse_proxy /request techbay-backend-node:8080
+reverse_proxy /request/* techbay-backend-node:8080
+
+handle_path /auth/* {
+	rewrite * /api/auth{path}
+	reverse_proxy techbay-backend-rust:3030
+}

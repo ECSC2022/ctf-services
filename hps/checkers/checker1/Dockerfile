@@ -1,0 +1,18 @@
+FROM wert310/gameserver-basechecker:ef3af01
+
+RUN mkdir -p /checker
+WORKDIR /checker
+
+COPY requirements.txt /checker/requirements.txt
+RUN pip install -r requirements.txt
+
+COPY checker.py /checker/checker.py
+COPY ca.crt commander.crt commander.key /
+RUN chmod +x /checker/checker.py
+USER ctf-checkermaster
+ENV CTF_CHECKERSCRIPT /checker/checker.py
+ENV PYTHONUNBUFFERED=1
+WORKDIR /tmp
+
+# set this to <yourchallengename>_checker<X>
+ENV CTF_SERVICE hps_checker1

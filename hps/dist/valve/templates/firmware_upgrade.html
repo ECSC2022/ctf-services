@@ -1,0 +1,9 @@
+{% extends "_base.html" %}
+{% block title %}WFC - Index{% endblock %}
+{% block content %}
+    <form action="{{ url_for('firmware_upgrade') }}" method="post" enctype=multipart/form-data>
+    <input type="file" id="firmware" name="firmware" accept=".bin"/>
+    <input type="submit" value="Upload"/>
+
+    </form>
+{% endblock %}

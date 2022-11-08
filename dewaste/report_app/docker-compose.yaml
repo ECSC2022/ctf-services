@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  external:
+    name: gamenet
+
+services:
+  dewaste-report-app:
+    restart: always
+    build: .
+    ports:
+      - "11111:5000"
+    networks:
+      - external
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"

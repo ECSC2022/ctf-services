@@ -1,0 +1,14 @@
+# allow read for valve to topic valve/commands
+
+user valve
+topic read valve/commands
+topic write valve/status
+
+# allow read write for everything for commander
+user commander
+topic readwrite #
+
+# allow read for smartmeter to topic smartmeter/commands
+user smartmeter
+topic read smartmeter/commands
+topic write smartmeter/status

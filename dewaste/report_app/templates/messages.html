@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+        {% block content %}
+        {% if not error %}
+            <h3>Issue #{{ link_uuid }}</h3>
+        {% for message in messages %}
+            <article>
+                {{ message.message }}
+                <footer>
+                    <small>Message sent @ {{ message.ts }}</small>
+                </footer>
+            </article>
+        {% endfor %}
+            <textarea name="message" form="form-comment-id"></textarea>
+            <form method="post" id="form-comment-id">
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+        {% endblock %}

@@ -1,0 +1,450 @@
+/* latin */
+@font-face {
+    font-family: 'Silkscreen';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/m8JXjfVPf62XiF7kO-i9YLNlaw.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin */
+@font-face {
+    font-family: 'VT323';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/pxiKyp0ihIEF2isfFJU.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    --bg-color: #051920;
+    --fg-text-color: #ffffff;
+    --fg-text-form-color: #afafaf;
+    --bg-error-color: #a71a01;
+    --bg-success-color: #0c9fb3;
+
+    --btn-normal-clr: var(--bg-primary);
+    --btn-hover-bg-clr: #082d1d;
+    --btn-hover-clr: white;
+
+    --unit-clr: #363636;
+
+    --fa-style-family: "Font Awesome 6 Free";
+    --title-font-family:  'Silkscreen', Helvetica, sans-serif;
+
+
+}
+
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    src:
+            url("/vendor/fortawesome/font-awesome/webfonts/fa-solid-900.woff2") format('woff2'),
+            url("/vendor/fortawesome/font-awesome/webfonts/fa-solid-900.ttf") format("ttf");
+}
+
+/* devanagari */
+@font-face {
+    font-family: 'Rajdhani';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/LDIxapCSOBg7S-QT7p4GM-aUWA.woff2') format('woff2');
+    unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Rajdhani';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/LDIxapCSOBg7S-QT7p4JM-aUWA.woff2') format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Rajdhani';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/LDIxapCSOBg7S-QT7p4HM-Y.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+/* Components */
+
+.button {
+    display: inline-block;
+    font-family: var(--title-font-family);
+    background-color: transparent;
+    color: var(--fg-text-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    text-decoration: none;
+    border: 3px solid var(--fg-text-color);
+    text-shadow: 0 0 5px var(--bg-color);
+    box-shadow: 0 0 5px var(--bg-color);
+}
+
+.button:hover {
+    background-color: var(--fg-text-color);
+    color: var(--bg-color);
+    text-shadow: none;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.unit {
+    color: var(--unit-clr);
+    font-size: 0.7em;
+}
+
+.min-width-50 {
+    min-width: 50%;
+}
+
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+div.hideable {
+    max-height: 99999999999999999999vh;
+    transition: max-height 200ms ease-in-out;
+    overflow: hidden;
+}
+
+div.hideable.hidden {
+    max-height: 0;
+}
+
+.alert-danger {
+    background-color: transparent;
+    color: var(--fg-text-color);
+    border: 3px solid var(--bg-error-color);
+    border-radius: 0;
+    margin-top: 2rem;
+}
+
+.alert-success {
+    background-color: transparent;
+    color: var(--fg-text-color);
+    border: 3px solid var(--bg-success-color);
+    border-radius: 0;
+    margin-top: 2rem;
+}
+
+/* Main Layout */
+
+body {
+    background: var(--bg-color) url("/img/hills.jpg") no-repeat center top;
+    color: var(--fg-text-color);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+header {
+    text-align: center;
+    margin: 4rem 0;
+    padding: 2rem 0;
+    font-family: var(--title-font-family);
+    color: white;
+    text-shadow: 0 0 5px var(--bg-color);
+}
+
+header h1 {
+    font-size: 5.2rem;
+}
+
+header .slogan {
+    font-size: 1rem;
+}
+
+/* dystopian animation because yes */
+header .slogan:after {
+	content: "";
+	animation: spin 2s infinite;
+    transition-timing-function: linear;
+}
+
+@keyframes spin {
+  0%   { content: "Recycling e-waste for a better future"; }
+  85%  { content: "Recycling e-waste for a better future"; }
+  86%  { content: "Recycling e-waste for a b tter future"; }
+  90%  { content: "Recycling e-waste for a bitter future"; }
+  96%  { content: "Recycling e-waste for a bitter future"; }
+  100% { content: "Recycling e-waste for a b tter future"; }
+}
+
+nav {
+    font-family: var(--title-font-family);
+    background-color: transparent !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--title-font-family);
+}
+
+h2 {
+    display: block;
+}
+
+a,
+a:active,
+a:hover {
+    color: var(--fg-text-color);
+    text-decoration: none;
+}
+
+main a {
+    border-bottom: 1px solid var(--fg-text-color);
+}
+
+textarea {
+    background-color: transparent;
+}
+
+input,
+.form-control,
+.form-control:hover,
+.form-control:active {
+    border-radius: 0;
+    background-color: transparent !important;
+    border: 3px solid var(--fg-text-color) !important;
+    color: var(--fg-text-color) !important;
+    box-shadow: none !important;
+}
+
+footer {
+    min-height: 7rem;
+    background-color: transparent;
+    border-top: 3px solid var(--fg-text-color);
+    padding: 2rem 0 0.5rem 0;
+    margin: 2rem 0;
+}
+
+.form-text {
+    color: var(--fg-text-form-color);
+}
+
+pre {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--fg-text-color);
+    overflow-wrap: break-word;
+    font-size: 110%;
+    padding: 1rem;
+    white-space: pre-wrap;
+}
+
+/* FAQ-Stuff */
+
+.faq-search-container form {
+    display: flex;
+}
+
+.faq-search-container input {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+}
+
+.faq-search-container button {
+    padding: 0 1rem;
+    margin: 0;
+    margin-left: -3px;
+    border-left: 0;
+}
+
+.faq {
+    padding: 1rem 0;
+}
+
+.faq .faq-question {
+    font-size: 1rem;
+    position: relative;
+    cursor: pointer;
+    font-family: var(--title-font-family);
+}
+
+.faq .faq-question::after {
+    content: "\f106";
+    font-family: var(--fa-style-family);
+    position: absolute;
+    right: 0;
+}
+
+
+.faq .faq-answer {
+    margin-block: 1.5rem;
+    padding: 2rem;
+    overflow: hidden;
+    border: 3px solid var(--fg-text-color);
+    max-height: 100000000000rem;
+    transition: max-height 200ms ease-in-out, padding 200ms ease-in-out, margin 200ms ease-in-out, border 200ms ease-in-out;
+}
+
+.faq.faq-collapsed .faq-answer {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.faq.faq-collapsed .faq-question::after {
+    content: "\f107";
+}
+
+.faq-no-entries {
+    margin: 2rem;
+}
+
+/* recycling */
+
+.recycle-nav {
+    margin: 0 0 1rem 0;
+}
+
+.recycle-nav .button {
+    margin-right: 2rem;
+}
+
+.recycle-nav .button.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.recycle-nav .hidden {
+    display: none;
+}
+
+.recycle-form fieldset {
+    margin: 2rem 0 2rem 0;
+}
+
+.new-user-form {
+    border-right: 3px solid var(--fg-text-color);
+}
+
+/* analyze */
+
+pre, #out, #tree {
+    font-family: 'VT323';
+}
+
+#out {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(34, 219, 219);
+    margin-top: 2rem;
+}
+
+#out div {
+    padding: 0 0.5rem;
+}
+
+#out div:first-child {
+    padding-top: 0.5rem;
+}
+#out div:last-child {
+    padding-bottom: 0.5rem;
+}
+
+#tree {
+    margin: 2rem 0;
+    font-size: 120%;
+}
+
+#tree .button {
+    display: block;
+    margin: 2rem auto 1rem auto;
+    width: 10rem;
+}
+
+#tree .depth-1 { margin-left: 0rem }
+#tree .depth-2 { margin-left: 2rem }
+#tree .depth-3 { margin-left: 4rem }
+#tree .depth-4 { margin-left: 6rem }
+#tree .depth-5 { margin-left: 8rem }
+#tree .depth-6 { margin-left: 10rem }
+#tree .depth-7 { margin-left: 12rem }
+#tree .depth-8 { margin-left: 14rem }
+#tree .depth-9 { margin-left: 16rem }
+
+#tree .dir {
+    border: 1px solid var(--fg-text-color);
+    border-width: 0 0 3px 3px;
+    padding: 0 0 2rem 0;
+}
+
+#tree .dir span.title {
+    background-color: var(--fg-text-color);
+    color: var(--bg-color);
+    padding: 0.27rem 0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    width: auto;
+}
+
+#tree .file {
+    padding-left: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.file .file-text {
+    /* background-color: var(--bg-success-color); */
+    color: var(--bg-success-color);
+    padding: 0.5rem;
+
+}
+
+.file img.file-image {
+    display: block;
+    border: 5px solid var(--fg-text-color);
+    transform: rotate(5deg);
+    margin: 2rem auto;
+}
+
+/* about */
+img.photo {
+    display: block;
+    margin: 3rem auto 3rem auto;
+    width: 60%;
+    border: 10px solid var(--fg-text-color);
+    transform: rotate(-3deg);
+    box-shadow: 0 0 5px var(--bg-color);
+}
+
+/* tables */
+.dark-table {
+    background-color: transparent;
+    border-width: 3px;
+
+    --bs-table-color: var(--fg-text-color);
+    --bs-table-bg: rgba(0, 0, 0, 0.5);
+    --bs-table-border-color: var(--fg-text-color);
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-striped-color: #fff;
+    --bs-table-active-bg: #373b3e;
+    --bs-table-active-color: #fff;
+    --bs-table-hover-bg: #323539;
+    --bs-table-hover-color: #fff;
+}
+
+table.table-dark > tbody > tr > td,
+table.table-dark > thead > tr > th {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+table.table-dark > tbody > tr,
+table.table-dark > thead > tr,
+table.table-dark > tbody > tr > td,
+table.table-dark > thead > tr > th {
+    border: 0 !important;
+}
+
+table.table-dark > tbody > tr > td {
+    border-top: 3px solid var(--bg-color) !important;
+}

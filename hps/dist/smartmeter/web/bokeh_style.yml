@@ -1,0 +1,29 @@
+attrs:
+    Figure:
+        background_fill_color: '#000084'
+        border_fill_color: '#000084'
+        outline_line_color: '#00aaaa'
+    Axis:
+        axis_line_color: "#00aaaa"
+        major_label_text_color: "#00aaaa"
+        major_tick_line_color: "#00aaaa"
+        minor_tick_line_color: "#00aaaa"
+        axis_label_text_color: "#00aaaa"
+    Grid:
+        grid_line_dash: [6, 4]
+        grid_line_alpha: .3
+        grid_line_color: "#00aaaa"
+    Title:
+        text_color: "#00aaaa"
+    Legend:
+        label_text_color: "#00aaaa"
+    BaseColorBar:
+        background_fill_color: '#000084'
+        border_line_color: '#00aaaa'
+        major_label_text_color: '#00aaaa'
+        major_tick_line_color: '#00aaaa'
+        minor_tick_line_color: '#00aaaa'
+    figure:
+        background_fill_color: '#000084'
+        border_fill_color: '#000084'
+        outline_line_color: '#00aaaa'

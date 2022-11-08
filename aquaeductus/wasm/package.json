@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "scripts": {
+    "lint": "prettier --check ./assembly",
+    "lint:fix": "prettier --write ./assembly",
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "assemblyscript": "^0.21.2",
+    "assemblyscript-regex": "^1.6.4"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
+}

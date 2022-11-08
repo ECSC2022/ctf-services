@@ -1,0 +1,42 @@
+<script defer src="/js/pyscript.min.js"></script>
+<py-config>
+    - autoclose_loader: true
+    - runtimes:
+      - src: "/pyodide/pyodide.js"
+        name: pyodide-0.21.1
+        lang: python
+</py-config>
+
+<h2>Analyze</h2>
+<p>
+    We are strongly committed to fighting the <strong>digital dark age</strong>. Most file formats
+    used by previous generations are now unreadable due to a lack of historical information and 
+    working hardware from the past. After realizing that the blind race to innovation nearly
+    destroyed the human race, we believe that the key to a sustainable future is to learn from past 
+    mistakes and avoid history repeating itself. You can use this page to analyze the content of old
+    archive files you may find around. Notice that <strong>we value your privacy</strong>, so we do 
+    not access files uploaded on this page. This is possible thanks to the integration of ancient 
+    and modern technologies that enable the archive analysis process <strong>entirely in your 
+    browser</strong>. Please recycle your archives if you are happy to share them with us.
+</p>
+
+<div>
+    <label for="upload" class="form-label">Analyze local file(s) (multiple files are supported)</label>
+    <input class="form-control" type="file" id="upload" multiple>
+</div>
+<div class="row">
+  <div class="col">
+    <button type="button" id="portable" class="button hidden">Generate portable URL</button>
+  </div>
+  <div class="col text-center" id="col-download">
+
+  </div>
+  <div class="col text-end" id="col-portable">
+    
+  </div>
+</div>
+
+<div id="out"></div>
+<div id="tree"></div>
+
+<py-script src="/py/analyze.py" output="out"></py-script>

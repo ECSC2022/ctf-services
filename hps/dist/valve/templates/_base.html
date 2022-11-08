@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            height: 100%;
+            max-width: 1080px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+
+        }
+
+        /* Style the header */
+        header {
+            background-color: #666;
+            padding: 30px;
+            color: white;
+            height: 160px;
+        }
+
+        /* Create two columns/boxes that floats next to each other */
+        nav {
+            float: left;
+            width: 20%;
+            height: 100%; /* only for demonstration, should be removed */
+            background: #ccc;
+            padding: 20px;
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style-type: disc;
+            color: dodgerblue;
+        }
+
+        article {
+            float: left;
+            padding: 20px;
+            width: 80%;
+            background-color: #f1f1f1;
+            height: 100%; /* only for demonstration, should be removed */
+        }
+
+        /* Clear floats after the columns */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+        @media (max-width: 600px) {
+            nav, article {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .loadbar
+        {
+             width:25px;
+             height:200px;
+             background-color:#fff;
+             border:1px solid #ccc;
+             position:relative;
+        }
+        .bar
+        {
+            width:100%;
+            display:block;
+            font-family:arial;
+            font-size:12px;
+            background-color: #bb1919;
+            color:#fff;
+            position:absolute;
+            bottom:0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div style="float: left">
+        <table>
+            <tr>
+                <td style="color: black; width: 100px; height: 30px"><b>Name:</b></td>
+                <td style="color:dodgerblue">{{ header_name }}</td>
+            </tr>
+            <tr>
+                <td style="color: black; width: 100px; height: 30px"><b>Location:</b></td>
+                <td style="color:dodgerblue">{{ header_location }}</td>
+            </tr>
+            <tr>
+                <td style="color: black; width: 100px; height: 30px"><b>Contact:</b></td>
+                <td style="color:dodgerblue">{{ header_contact }}</td>
+            </tr>
+        </table>
+
+
+    </div>
+    <div style="float: right">
+        <img src="static/logo.png" alt="logo" height="100">
+    </div>
+</header>
+
+<section style="flex: 1">
+    <nav>
+        <div style="background-color: #f1f1f1; width: 100%; height: 100%; padding-top: 20px;">
+            <ul>
+              <li><a href="{{ url_for('index') }}">Status</a></li>
+              <li><a href="{{ url_for('debug') }}">Debug</a></li>
+              <li><a href="{{ url_for('logs') }}">Logs</a></li>
+              <li><a href="{{ url_for('command_logs') }}">Command Logs</a></li>
+              <li><a href="{{ url_for('firmware_upgrade') }}">Firmware Upgrade</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <article>
+        {% block content %}{% endblock %}
+    </article>
+</section>
+
+<footer>
+    <p>Please don´t hack, we need it :(</p>
+</footer>
+</body>
+</html>

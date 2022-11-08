@@ -1,0 +1,7 @@
+paho-mqtt
+whitenoise
+svg.charts
+matplotlib
+numpy
+bokeh
+django

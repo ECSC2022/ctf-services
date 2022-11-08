@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  aquaeductus-service:
+    build: src
+    restart: unless-stopped
+    ports:
+      - "10041:10041"
+    environment:
+      DATABASE_DBNAME: aquaeductus
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: password
+    depends_on:
+      - aquaeductus-database
+    read_only: true
+    shm_size: 0
+
+  aquaeductus-database:
+    image: mysql:8.0.30
+    restart: unless-stopped
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: aquaeductus
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - database-data:/var/lib/mysql
+
+  # For your personal debugging only, not deployed.
+  aquaeductus-phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2
+    ports:
+      - "10049:80"
+    environment:
+      PMA_HOST: aquaeductus-database
+      PMA_USER: root
+      PMA_PASSWORD: secret
+
+volumes:
+  database-data:

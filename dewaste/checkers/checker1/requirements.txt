@@ -1,0 +1,4 @@
+requests
+beautifulsoup4
+Faker==15.0.0
+Pillow==9.2.0

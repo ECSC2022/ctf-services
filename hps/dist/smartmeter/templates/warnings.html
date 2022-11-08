@@ -1,0 +1,7 @@
+{% if messages %}
+        {% for message in messages %}
+        <div class="col-lg-12  d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-danger"><h5>{{ message }}</h5></button>
+        </div>
+        {% endfor %}
+{% endif %}

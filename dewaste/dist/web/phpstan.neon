@@ -1,0 +1,10 @@
+parameters:
+	level: 9
+	paths:
+		- src
+	excludePaths:
+		- src/common.php
+	bootstrapFiles:
+		- src/common.php
+	ignoreErrors:
+		- '/Parameter #1 \$row of method App\\Persistence\\[a-zA-Z\\]+DAO::parseRow\(\) expects array.*, mixed given/'

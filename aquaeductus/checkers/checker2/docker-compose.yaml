@@ -1,0 +1,13 @@
+version: '3'
+
+volumes:
+  checkerstate:
+
+services:
+  checker:
+    build: .
+    command: localhost 1 ${TICK} # ip, team, tick
+    # note that your service should be able to handle domain names and IP addresses
+    network_mode: host
+    volumes:
+      - checkerstate:/tmp

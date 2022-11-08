@@ -1,0 +1,39 @@
+<div class="container">
+        <a href="{% url "render_graph_current" %}" class="navbar-brand">Powerview v0.01 pre-alpha</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Graphs <span class="caret"></span></a>
+              <div class="dropdown-menu" aria-labelledby="themes">
+                <a class="dropdown-item" href="{% url "render_graph_power" %}">Default</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url "render_graph_voltage" %}">Voltage</a>
+                <a class="dropdown-item" href="{% url "render_graph_current" %}">Current</a>
+                <a class="dropdown-item" href="{% url "render_graph_frequency" %}">Frequency</a>
+                <a class="dropdown-item" href="{% url "render_graph_phase_shift" %}">Phase Shift</a>
+                <a class="dropdown-item" href="{% url "render_graph_power" %}">Apparent Power</a>
+                <a class="dropdown-item" href="{% url "render_graph_power" %}">Reactive Power</a>
+                <a class="dropdown-item" href="{% url "render_graph_power" %}">Active Power</a>
+
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "current_readings" %}">Current Readings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "render_settings" %}">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "work_in_progress" %}">Software update</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://help.lost.in.dot.com.bubble">Help</a>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>

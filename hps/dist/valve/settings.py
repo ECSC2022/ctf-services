@@ -1,0 +1,4 @@
+
+ENABLE_PCAP = False
+
+MQTT_PASSWORD = "NwdZbbqefnKgXfk7dLmP5LfM"

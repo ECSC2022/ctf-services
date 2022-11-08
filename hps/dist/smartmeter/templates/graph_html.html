@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block content %}
+ {% if messages %}
+        {% for message in messages %}
+        <div class="col-lg-12  d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-danger"><h5>{{ message }}</h5></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="col-lg-12">
+    <iframe style="height: 1000px; width: 100%" src="{{ image_data }}">
+  The “iframe” tag is not supported by your browser.
+</iframe>
+
+    </div>
+{% endblock %}

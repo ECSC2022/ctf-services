@@ -1,0 +1,71 @@
+version: '3.8'
+  
+services:
+  techbay-database:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: database/
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: techbay
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres-volume:/run
+    read_only: true
+
+  techbay-proxy:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: proxy
+    ports:
+      - 10070:8080
+    depends_on:
+      - techbay-frontend
+      - techbay-backend-node
+    read_only: true
+
+  techbay-backend-node:
+    restart: always
+    build:
+      dockerfile: docker/Dockerfile
+      context: backend-node/
+    environment:
+      DB_HOST: techbay-database
+      DB_PORT: 5432
+      DB_NAME: techbay
+      DB_USER: postgres
+      DB_PASSWORD: password
+    depends_on:
+      - techbay-database
+    read_only: true
+
+  techbay-backend-rust:
+    restart: always
+    build:
+      dockerfile: docker/Dockerfile
+      context: backend-rust/
+    environment:
+      DATABASE_URL: postgres://postgres:password@techbay-database/techbay
+      RUST_LOG: info
+    depends_on:
+      - techbay-database
+    volumes:
+      - passport-volume:/app/data
+    read_only: true
+
+  techbay-frontend:
+    restart: always
+    build:
+      dockerfile: docker/Dockerfile
+      context: frontend/
+    read_only: true
+
+volumes:
+  passport-volume:
+  postgres-volume:
+  proxy-cache:
+  proxy-log:
+  proxy-run:

@@ -1,0 +1,30 @@
+{
+  "name": "rinux/ecsc2022",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "App/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\": "src/App/"
+    }
+  },
+  "require": {
+    "ext-openssl": "*",
+    "ext-pdo": "*",
+    "fortawesome/font-awesome": "6.1.2",
+    "psr/container": "2.0.2",
+    "psr/log": "3",
+    "twbs/bootstrap": "5.2.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5",
+    "phpstan/phpstan": "^1.8.2"
+  },
+  "scripts": {
+    "dev:lint": "phpcs -s src/",
+    "dev:fix-lint": "phpcbf src/"
+  }
+}

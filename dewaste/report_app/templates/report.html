@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+        {% block content %}
+            <h3>Report</h3>
+        {% if link_uuid %}
+            <p class="success">
+                Thank you, your issue is being tracked <a href="{{ link_uuid }}">here</a>.
+            </p>
+        {% else %}
+            <p>
+                Please provide the affected URL in the form below. Our bots will shortly investigate
+                the issue and inform you of the outcome.
+            </p>
+            <p>
+                To prevent abuse, we implement a simple proof-of-work challenge that must be
+                completed before sending a URL. Given <code>salt</code> and <code>suffix</code>,
+                find a sequence of bytes <code>seq</code> such that
+                <code>sha256(salt + seq).digest().endswith(suffix)</code>. After obtaining a valid 
+                <code>seq</code>, submit the base64-encoded value of <code>seq</code>. 
+            </p>
+            <form method="post">
+                <label for="link-id">Link:</label>
+                <input type="text" id="link-id" name="link" value="" placeholder="http://...">
+                
+                <div class="grid">
+                    <label for="pow-id">
+                        Proof of Work:
+                        <input type="text" id="pow-id" name="pow" value="" placeholder="base64(seq)">
+                    </label>
+                    <div>
+                        <br>
+                        <ul>
+                            <li>salt (b64-encoded) <code>{{ pow_salt }}</code></li>
+                            <li>suffix (b64-encoded) <code>{{ pow_suffix }}</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+        {% endblock %}

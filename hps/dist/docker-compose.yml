@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  hps-smartmeter:
+    read_only: true
+    restart: always
+    build: smartmeter
+    ports:
+      - "10030:10030"
+    environment:
+      DB_PATH: "/data/"
+
+    volumes:
+      - hps-smartmeter-storage:/data:rw
+      - hps-smartmeter-tmp:/tmp:rw
+
+  hps-valve:
+    restart: always
+    build: valve
+    cap_add:
+      - SYS_CHROOT
+    ports:
+      - "10031:10031"
+    environment:
+      LOG_PATH: "/data/"
+    volumes:
+      - hps-valve-storage:/data:rw
+      - hps-valve-tmp:/tmp:rw
+
+  hps-mqtt:
+    read_only: true
+    restart: always
+    build: mqtt
+    ports:
+      - "10035:10035"
+      - "10036:10036"
+    environment:
+      LOG_PATH: "/data/"
+
+    volumes:
+      - hps-mqtt-storage:/data:rw
+
+volumes:
+  hps-smartmeter-storage:
+  hps-smartmeter-tmp:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  hps-valve-storage:
+  hps-valve-tmp:
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+  hps-mqtt-storage:

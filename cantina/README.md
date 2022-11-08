@@ -1,0 +1,10 @@
+CANtina
+=======
+Welcome to the Cantina, friend! Enter the best place around, when your budget is low, and your standards are lower! You will never find a more wretched hive of scum and villainy. But we are all a big family here, so no worries. And on the bright side, nobody has to leave hungry, as long as they are willing to put in a little bit of work. But then, if they aren't, they won't leave hungry as well, if you know what I mean. But I'm sure you will be fine. Just don't tamper with anything. Resources are scarce, and as usual, most of them are already scavenged by the big conglomerates like DEWASTE, and Techbay. But we are doing our best to keep things running for the masses. Our underground network reaches quite far. No passport required for you to stay and work here. After everything collapsed, it's not like borders mean anything anymore anyway, right?
+
+We even have a Jukebox! I'm sure you haven't even seen one before! I mean, we made some slight modifications to adapt it to our needs. But it's all for the community. And the Music. Aah! Just delightful, I can tell you that. It's all wired up to the rest of our services, and we even have some limited broadcasting services. But of course, everything is wire based: wireless networks can't really be trusted. Not robust enough for critical things. And don't even get me started on those AI whisperers... If a system is too smart, it can't be trusted. Better to use simpler technologies is what I always say. But now come in, I'm sure you are starving already.
+
+
+Description
+-----------
+The setting of this service is a **CANtina** (pun intended) where you can order food and enjoy some music while you hang out. The system running this cantina has been ripped out from a car, and the devices have been repurposed from car interfaces (info dashboards and their controllers) into a food ordering system, a media center playing music and an order processing screen showing the details of an order to the team in the kitchen. In order to listen to the streamed music of the media center, access to the CAN bus is allowed remotely.

@@ -1,0 +1,98 @@
+{{define "auth"}}
+{{template "header" .}}
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="title">Authentication</h1>
+
+        {{if .error}}
+        <div class="notification is-danger is-light">{{ .error }}</div>
+        {{end}}
+
+        <div class="card">
+            <div class="card-content">
+                <div class="content">
+                    <form action="/login" method="post">
+                        <h2>Login</h2>
+
+                        <div class="field">
+                            <label class="label" for="login_username">Username</label>
+                            <div class="control">
+                                <input type="text"
+                                       name="username"
+                                       id="login_username"
+                                       class="input"
+                                       placeholder="Username"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="login_password">Password</label>
+                            <div class="control">
+                                <input type="password"
+                                       name="password"
+                                       id="login_password"
+                                       class="input"
+                                       placeholder="Password"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card mt-6">
+            <div class="card-content">
+                <div class="content">
+                    <form action="/register" method="post">
+                        <h2>Register</h2>
+
+                        <div class="field">
+                            <label class="label" for="register_username">Username</label>
+                            <div class="control">
+                                <input type="text"
+                                       name="username"
+                                       id="register_username"
+                                       class="input"
+                                       placeholder="Username"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="register_password">Password</label>
+                            <div class="control">
+                                <input type="password"
+                                       name="password"
+                                       id="register_password"
+                                       class="input"
+                                       placeholder="Password"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{template "footer" .}}
+{{end}}

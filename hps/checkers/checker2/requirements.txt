@@ -1,0 +1,4 @@
+requests
+paho-mqtt
+tlv8
+pycryptodome==3.15.0

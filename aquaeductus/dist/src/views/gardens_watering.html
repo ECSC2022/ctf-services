@@ -1,0 +1,125 @@
+{{define "gardens_watering"}}
+{{template "header" .}}
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="title"><a href="/gardens">Gardens</a> - {{ .garden.Name }}</h1>
+
+        <div class="tabs is-centered">
+            <ul>
+                <li><a href="/gardens/{{ hashid .garden.ID }}">Details</a></li>
+                <li class="is-active"><a href="/gardens/{{ hashid .garden.ID }}/watering">Watering Requests</a></li>
+                {{if .showReports}}<li><a href="/gardens/{{ hashid .garden.ID }}/reports">Weather Reports</a></li>{{end}}
+            </ul>
+        </div>
+
+        {{if .showStore}}
+        <div class="card mb-6">
+            <div class="card-content">
+                <div class="content">
+                    <form action="/gardens/{{ hashid $.garden.ID }}/watering" method="post">
+                        <label class="label" for="request_water">Available Water</label>
+                        <div class="columns is-vcentered">
+                            <div class="column">
+                                <div class="field has-addons">
+                                    <div class="control is-expanded">
+                                        <input type="number"
+                                               id="request_water"
+                                               class="input"
+                                               min="1"
+                                               max="1000000"
+                                               name="water_available"
+                                               required>
+                                    </div>
+                                    <div class="control">
+                                        <a href="#" class="button is-static" disabled>
+                                            litres
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-narrow">
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary">Request</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{end}}
+
+        {{ range $request := .wateringRequests }}
+        <div class="card mb-4">
+            <div class="card-content">
+                <div class="content">
+
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field">
+                                <label class="label{{if $request.AcceptedAt.Valid}} has-text-success{{end}}"
+                                       for="request{{ $request.ID }}_author">Author</label>
+                                <div class="control">
+                                    <input type="text"
+                                           id="request{{ $request.ID }}_author"
+                                           class="input{{if $request.AcceptedAt.Valid}} is-success{{end}}"
+                                           value="{{$request.User.Username}}"
+                                           readonly
+                                           disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="field">
+                                <label class="label{{if $request.AcceptedAt.Valid}} has-text-success{{end}}"
+                                       for="request{{ $request.ID }}_water">Water Available</label>
+                                <div class="control">
+                                    <input type="text"
+                                           id="request{{ $request.ID }}_water"
+                                           class="input{{if $request.AcceptedAt.Valid}} is-success{{end}}"
+                                           value="{{$request.WaterAvailable}}"
+                                           readonly
+                                           disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{if and ($request.AcceptedAt.Valid) (not $.showInstructions)}}
+                    <div class="field">
+                        <label class="label{{if $request.AcceptedAt.Valid}} has-text-success{{end}}"
+                               for="request{{ $request.ID }}_instructions">Watering Instructions</label>
+                        <div class="control">
+                            <textarea class="textarea{{if $request.AcceptedAt.Valid}} is-success{{end}}"
+                                      id="request{{ $request.ID }}_instructions"
+                                      readonly
+                                      disabled>{{ $.garden.Instructions }}</textarea>
+                        </div>
+                    </div>
+                    {{end}}
+
+                    {{if and (not $request.AcceptedAt.Valid) ($.showApproves)}}
+                    <form action="/gardens/{{ hashid $.garden.ID }}/watering/{{ $request.ID }}" method="post">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">Approve</button>
+                            </div>
+                        </div>
+                    </form>
+                    {{end}}
+
+                </div>
+            </div>
+        </div>
+        {{end}}
+
+    </div>
+</section>
+
+{{template "footer" .}}
+{{end}}

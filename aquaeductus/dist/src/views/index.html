@@ -1,0 +1,63 @@
+{{define "index"}}
+{{template "header" .}}
+
+<div class="columns is-vcentered">
+    <div class="column">
+        <section class="hero">
+            <div class="hero-body">
+                <p class="title">
+                    Aquaeductus
+                </p>
+                <p class="subtitle">
+                    <a href="/gardens">Your garden</a> can help reduce water usage by sharing data and insights with other gardeners around the world. By sharing weather reports and inference models, others can maximize their garden's water usage.
+                </p>
+            </div>
+        </section>
+    </div>
+    <div class="column is-half">
+        <figure class="image is-1by1">
+            <img src="/assets/aquaeductus.jpg" class="img-front">
+        </figure>
+    </div>
+</div>
+
+
+
+<nav class="level mb-6">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">
+            <a href="/gardens">Gardens</a>
+        </p>
+        <p class="title">1,337</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">
+              <a href="/gardens">Weather Reports</a>
+          </p>
+          <p class="title">2,831</p>
+        </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">
+            Liters of Water Saved
+        </p>
+        <p class="title">31,337</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">
+            Users
+        </p>
+        <p class="title">404</p>
+      </div>
+    </div>
+</nav>
+
+
+{{template "footer" .}}
+{{end}}

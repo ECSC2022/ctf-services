@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block content %}
+    <style>
+
+    </style>
+<script>
+    function loadDeferredWarning() {
+        var div = document.getElementById("my-deferred-div");
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "../warning", false ); // false for synchronous request
+        xmlHttp.send( null );
+        div.innerHTML = xmlHttp.responseText;
+    }
+    window.onload = loadDeferredWarning;
+</script>
+    <div id="my-deferred-div">
+    </div>
+
+    <div class="col-lg-12">
+       <img width="100%" style="{{ additional_style }}" src="{{ image_data }}" alt="Rendering failed :(" />
+    </div>
+{% endblock %}

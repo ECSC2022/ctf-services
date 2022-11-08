@@ -1,0 +1,5 @@
+selenium==4.4.3
+Pillow==9.2.0
+requests==2.28.1
+cffi==1.15.1
+cryptography==38.0.1

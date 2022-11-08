@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <file>src/</file>
+
+    <arg name="extensions" value="php"/>
+
+    <rule ref="PSR12" />
+    <rule ref="PSR2.Methods.MethodDeclaration.Underscore">
+        <exclude-pattern>*Clause.php</exclude-pattern>
+    </rule>
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>*/config.php</exclude-pattern>
+    </rule>
+</ruleset>

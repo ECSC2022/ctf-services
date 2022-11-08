@@ -1,0 +1,96 @@
+{{define "gardens_create"}}
+{{template "header" .}}
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="title">Gardens - Create</h1>
+
+        {{if .error}}
+        <div class="notification is-danger is-light">{{ .error }}</div>
+        {{end}}
+
+        <div class="card">
+            <div class="card-content">
+                <div class="content">
+                    <form action="/gardens" method="post">
+
+                        <div class="field">
+                            <label class="label" for="garden_name">Name</label>
+                            <div class="control">
+                                <input type="text"
+                                       name="name"
+                                       id="garden_name"
+                                       class="input"
+                                       placeholder=""
+                                       required>
+                            </div>
+                        </div>
+
+                        <label class="label">Coordinates</label>
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input type="number"
+                                       min="-90"
+                                       max="90"
+                                       step="0.001"
+                                       name="latitude"
+                                       id="garden_latitude"
+                                       class="input"
+                                       aria-label="Latitude"
+                                       placeholder="Latitude"
+                                       required>
+                            </div>
+                            <div class="control is-expanded">
+                                <input type="number"
+                                       min="-180"
+                                       max="180"
+                                       step="0.001"
+                                       name="longitude"
+                                       id="garden_longitude"
+                                       class="input"
+                                       aria-label="Longitude"
+                                       placeholder="Longitude"
+                                       required>
+                            </div>
+                        </div>
+
+                        <label class="label" for="garden_water">Water required daily</label>
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input type="number"
+                                       name="water_required"
+                                       id="garden_water"
+                                       class="input"
+                                       placeholder=""
+                                       required>
+                            </div>
+                            <div class="control">
+                                <a href="#" class="button is-static" disabled>
+                                    litres
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="garden_instructions">Watering Instructions</label>
+                            <div class="control">
+                                <textarea class="textarea" name="instructions" id="garden_instructions"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{template "footer" .}}
+{{end}}

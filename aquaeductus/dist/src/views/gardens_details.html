@@ -1,0 +1,150 @@
+{{define "gardens_details"}}
+{{template "header" .}}
+
+<section class="section">
+    <div class="container">
+
+        <h1 class="title"><a href="/gardens">Gardens</a> - {{ .garden.Name }}</h1>
+
+        <div class="tabs is-centered">
+            <ul>
+                <li class="is-active"><a href="/gardens/{{ hashid .garden.ID }}">Details</a></li>
+                <li><a href="/gardens/{{ hashid .garden.ID }}/watering">Watering Requests</a></li>
+                {{if .showReports}}
+                <li><a href="/gardens/{{ hashid .garden.ID }}/reports">Weather Reports</a></li>
+                {{end}}
+            </ul>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-content">
+                <div class="content">
+
+                    <div class="field">
+                        <label class="label" for="garden_owner">Owner</label>
+                        <div class="control">
+                            <input type="text"
+                                   id="garden_owner"
+                                   class="input"
+                                   value="{{.garden.User.Username}}"
+                                   readonly
+                                   disabled>
+                        </div>
+                    </div>
+
+                    {{if .showCoordinates}}
+                    <label class="label">Coordinates</label>
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input type="number"
+                                   min="-90"
+                                   max="90"
+                                   step="0.001"
+                                   id="garden_latitude"
+                                   class="input"
+                                   aria-label="Latitude"
+                                   value="{{.garden.Latitude}}"
+                                   readonly
+                                   disabled>
+                        </div>
+                        <div class="control is-expanded">
+                            <input type="number"
+                                   min="-180"
+                                   max="180"
+                                   step="0.001"
+                                   id="garden_longitude"
+                                   class="input"
+                                   aria-label="Longitude"
+                                   value="{{.garden.Longitude}}"
+                                   readonly
+                                   disabled>
+                        </div>
+                    </div>
+                    {{end}}
+
+                    <label class="label" for="garden_water">Water required daily</label>
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input type="number"
+                                   id="garden_water"
+                                   class="input"
+                                   value="{{.garden.WaterRequired}}"
+                                   readonly
+                                   disabled>
+                        </div>
+                        <div class="control">
+                            <a href="#" class="button is-static" disabled>
+                                litres
+                            </a>
+                        </div>
+                    </div>
+
+                    {{if .showInstructions}}
+                    <div class="field">
+                        <label class="label" for="garden_instructions">Watering Instructions</label>
+                        <div class="control">
+                            <textarea class="textarea"
+                                      id="garden_instructions"
+                                      readonly
+                                      disabled>{{ .garden.Instructions }}</textarea>
+                        </div>
+                    </div>
+                    {{end}}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <div class="content">
+                    <form action="/gardens/{{ hashid .garden.ID }}/infer" method="post" enctype="multipart/form-data">
+                        <h2 class="title is-3">Growth Model</h2>
+
+                        <label class="label">Network</label>
+                        <div class="columns is-vcentered">
+                            <div class="column">
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="file has-name" id="inference-file">
+                                            <label class="file-label">
+                                                <input class="file-input" name="network" type="file">
+                                                <span class="file-cta">
+                                            <span class="file-icon"><i class="fas fa-upload"></i></span>
+                                            <span class="file-label">Choose a file...</span>
+                                        </span>
+                                                <span class="file-name">No file uploaded</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column is-narrow">
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary">Inference</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const fileInput = document.querySelector('#inference-file input[type=file]');
+            fileInput.onchange = () => {
+                if (fileInput.files.length > 0) {
+                    const fileName = document.querySelector('#inference-file .file-name');
+                    fileName.textContent = fileInput.files[0].name;
+                }
+            }
+        </script>
+
+    </div>
+</section>
+
+{{template "footer" .}}
+{{end}}

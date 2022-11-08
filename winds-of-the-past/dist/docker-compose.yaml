@@ -1,0 +1,14 @@
+version: '3'
+
+volumes:
+  data:
+
+services:
+  winds-of-the-past:
+    build: .
+    user: service
+    restart: always
+    ports:
+      - 10060:10060
+    volumes:
+      - data:/data
